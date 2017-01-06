@@ -1,0 +1,47 @@
+<%= form_for(user) do |f| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-lg-6">
+      <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="field">
+        <%= f.label :messaging_preferences %><br />
+        <%= f.fields_for :messaging_preferences, user.messaging_preferences do |message_type| %>
+          Marketing emails: <%= message_type.check_box :marketing, { checked: user.messaging_preferences["marketing"] == "true" }, "true", "false" %><br />
+          Article emails: <%= message_type.check_box :articles, { checked: user.messaging_preferences["articles"] == "true" }, "true", "false" %><br />
+          Weekly digests: <%= message_type.check_box :digest, { checked: user.messaging_preferences["digest"] == "true" }, "true", "false" %><br />
+        <% end %>
+      </div>
+    </div>
+  </div>
+<br />
+  <div class="row">
+    <div class="col-lg-6"></div>
+    <div class="col-lg-6">
+      <div class="actions">
+        <%= f.submit 'Submit Info', :class => 'btn btn-danger' %>
+      </div>
+    </div>
+  </div>
+<% end %>

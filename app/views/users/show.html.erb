@@ -1,0 +1,53 @@
+<div id="main-container" class="container">
+
+  <p id="notice"><%= notice %></p>
+  <div class="row">
+    <div class="col-md-6 user_specs">
+      <p>
+        <strong>Name:</strong>
+        <%= @user.name %>
+      </p>
+
+      <p>
+        <strong>Email:</strong>
+        <%= @user.email %>
+      </p>
+    </div>
+
+    <div class="col-md-6 message_specs">
+      <p>
+        <div class="col-lg-5">
+          <strong>Messaging preferences:</strong><br />
+        </div>
+        
+        <div class="col-lg-7">
+          <% @user.messaging_preferences.each do |message| %>
+            <%= message[0].capitalize %> opt in: <%= message[1].to_s.capitalize %><br />
+          <% end %>
+        </div>
+      </p>
+    </div>
+  </div>
+
+<hr width= 90% />
+
+  <div class="row">
+
+    <div class="col-lg-3">
+      <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-info'%>
+    </div>
+
+  <div class="col-lg-3">
+      <%= link_to 'Back', users_path, class: 'btn btn-info' %>
+  </div>
+  
+  <div class="col-lg-3">
+  </div>
+
+  <div class="col-lg-3">
+    <%= button_to 'Create user Token', generate_token_path(@user), class: 'btn btn-info' %>
+  </div>
+
+
+</div>
+

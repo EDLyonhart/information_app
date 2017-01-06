@@ -1,0 +1,49 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bootstrap-sprockets"
+@import "bootstrap"
+
+$information-rust-red: #D04237
+$information-perrywinkle: #5B8AD8
+
+@mixin centerer 
+  position: absolute
+  left: 50%
+  transform: translate(-50%, -50%)
+
+
+body
+  padding: 3% 2% 2% 0
+  background-color: $information-perrywinkle
+
+.container
+  width: 60%
+  font: 100% Helvetica, sans-serif
+  background-color: white
+  padding: 10px 10px 10px 10px
+  border-radius: 5px
+  border-bottom: solid darken($information-perrywinkle, 30%) 5px
+  border-right: solid darken($information-perrywinkle, 30%) 5px
+
+.row
+  padding: 0px 10px 0px 10px
+
+.centerer
+  left: 43%
+
+.border
+  border: solid darken($information-perrywinkle, 20%) 2px
+
+.btn
+  color: white
+
+  &:visited
+    color: white
+  &:hover
+    color: black
+
+.light-up:hover
+  background-color: $information-rust-red
+  color: white
