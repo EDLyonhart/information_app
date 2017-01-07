@@ -18,6 +18,9 @@
       <%= link_to 'Back', users_path, class: 'btn btn-info' %>
     </div>
 
+    <% user = User.where(:email => params[:email]) %>
+    <% token = Token.find(params[:token]) %>
+
     <div class="col-lg-6">
       <%= link_to "Unsubscribe from all emails", unsubscribe_user_path(@user), :method => :put, class: 'btn btn-danger' %>
     </div>

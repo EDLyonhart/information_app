@@ -24,7 +24,9 @@
         <%= message_type[0].capitalize %> opt in: <%= message_type[1].to_s.capitalize %><br />
       <% end %></td>
             <td><%= link_to 'Show', user %></td>
-            <td><%= link_to 'Edit', edit_user_path(user) %></td>
+            <td><%= link_to 'Edit', edit_user_path(user, :email => user.email, 
+                                                         :token => Token.where(:user_id => user.id)["id".to_i]
+                                                  ) %></td>
             <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
         <% end %>
