@@ -40,12 +40,30 @@
     <div class="col-lg-6"></div>
     <div class="col-lg-6">
       <div class="actions">
+
+      <!-- if the URL includes 'edit' and a token exists for the user -->
       <% if request.original_url.include?("edit") %>
-        <% if User.find_by(:email => params[:email]).id == Token.find(params[:token]).user_id %>
-          <%= f.submit 'Submit Info', :class => 'btn btn-danger' %>
-        <% end %>
+
+        <!-- if the user has a token -->
+        <% if params[:token] %>
+
+          <!-- and the user email and token match, render the submit botton -->
+          <% if User.find_by(:email => params[:email]).id == Token.find(params[:token]).user_id %>
+            <%= f.submit 'Submit Info', :class => 'btn btn-danger' %>
+          
+          <!-- otherwise, indicate that the token is the incorrect token for this user -->
+          <% else %>
+            The token you are using is incorrect for this account
+          <% end %>
+
+        <!-- if the user has no token-->
         <% else %>
-          <%= f.submit 'Submit Info', :class => 'btn btn-danger' %>
+          You must generate a token before being able to submit changes to your profile
+        <% end %>
+
+      <!-- otherwise it is a new user who doesnt need a token -->
+      <% else %>
+        <%= f.submit 'Submit Info', :class => 'btn btn-danger' %>
       <% end %>
       </div>
     </div>

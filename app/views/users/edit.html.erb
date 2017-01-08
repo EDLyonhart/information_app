@@ -18,11 +18,11 @@
       <%= link_to 'Back', users_path, class: 'btn btn-info' %>
     </div>
 
-    <% if User.find_by(:email => params[:email]).id == Token.find(params[:token]).user_id %>
-      <div class="col-lg-6">
-        <%= link_to "Unsubscribe from all emails", unsubscribe_user_path(@user), :method => :put, class: 'btn btn-danger' %>
-      </div>
-    <% end %>
+      <!-- only render this link if user has a token, and Token.user_id matches User.id -->
+      <% if params[:token] && user = User.find_by(:email => params[:email]).id == Token.find(params[:token]).user_id %>
+        <div class="col-lg-6">
+          <%= link_to "Unsubscribe from all emails", unsubscribe_user_path(@user), :method => :put, class: 'btn btn-danger' %>
+        </div>
+      <% end %>
   </div>
 </div>
-
