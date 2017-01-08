@@ -20,6 +20,8 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @edit = true
+    @modifiable =  params[:token] && @user.id == Token.find(params[:token]).user_id
   end
 
   # POST /users

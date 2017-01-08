@@ -5,7 +5,7 @@ class Token < ApplicationRecord
 
 
   def self.generate(user)
-    @user = user
+    # @user = user
     
     if Token.exists?(:user_id => user.id)
       p "User already has an associated token"
@@ -15,21 +15,14 @@ class Token < ApplicationRecord
       token.user_id = user.id
       token.save
 
-      token
+      # token
     end
   end
 
   def self.consume(nonce)
     token = Token.find_by(:nonce => nonce)
 
-    if token != []
-      user = User.where(:id => token["user_id".to_i])
-      token.delete      
-      
-      user
-    else
-      nil
-    end
+    token.delete && token.user unless !token
   end
 
 end

@@ -42,7 +42,7 @@
       <div class="actions">
 
       <!-- if the URL includes 'edit' and a token exists for the user -->
-      <% if request.original_url.include?("edit") %>
+      <% if @edit %>
 
         <!-- if the user has a token -->
         <% if params[:token] %>
