@@ -41,7 +41,7 @@ class TokensController < ApplicationController
   def generate
     user = User.find(params[:id])
     Token.generate(user)
-    redirect_to user_path(user)
+    redirect_to :back, notice: 'Token was successfully generated.'
   end
 
 end
