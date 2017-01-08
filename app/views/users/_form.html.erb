@@ -40,7 +40,13 @@
     <div class="col-lg-6"></div>
     <div class="col-lg-6">
       <div class="actions">
-        <%= f.submit 'Submit Info', :class => 'btn btn-danger' %>
+      <% if request.original_url.include?("edit") %>
+        <% if User.find_by(:email => params[:email]).id == Token.find(params[:token]).user_id %>
+          <%= f.submit 'Submit Info', :class => 'btn btn-danger' %>
+        <% end %>
+        <% else %>
+          <%= f.submit 'Submit Info', :class => 'btn btn-danger' %>
+      <% end %>
       </div>
     </div>
   </div>
