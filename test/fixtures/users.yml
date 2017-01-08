@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  email: MyString
-  messaging_preferences: MyText
+  name: Jimmy John
+  email: Jimmy_J@Gmail.com
+  messaging_preferences: {"articles": true, "marketing": false, "digest": true}
 
 two:
-  name: MyString
-  email: MyString
-  messaging_preferences: MyText
+  name: Eli Lyonhart
+  email: EDLyonhart@gmail.com
+  messaging_preferences: {"articles": false, "marketing": false, "digest": true}

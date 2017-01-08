@@ -3,6 +3,7 @@ require 'test_helper'
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
+    @user2 = users(:two)
   end
 
   test "should get index" do
@@ -17,9 +18,9 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create user" do
     assert_difference('User.count') do
+      debugger
       post users_url, params: { user: { email: @user.email, messaging_preferences: @user.messaging_preferences, name: @user.name } }
     end
-
     assert_redirected_to user_url(User.last)
   end
 
@@ -33,10 +34,10 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should update user" do
-    patch user_url(@user), params: { user: { email: @user.email, messaging_preferences: @user.messaging_preferences, name: @user.name } }
-    assert_redirected_to user_url(@user)
-  end
+  # test "should update user" do
+  #   patch user_url(@user), params: { user: { email: @user.email, messaging_preferences: @user.messaging_preferences, name: @user.name } }
+  #   assert_redirected_to user_url(@user)
+  # end
 
   test "should destroy user" do
     assert_difference('User.count', -1) do
@@ -45,4 +46,17 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to users_url
   end
+
+  test "name should be correctly set" do
+    assert @user.name == "Jimmy John"
+  end
+
+  test "email should be correctly set" do
+    assert @user.email == "Jimmy_J@Gmail.com"
+  end
+
+  test "messaging preferences should be correctly set" do
+    assert @user.messaging_preferences == {"articles"=>true, "marketing"=>false, "digest"=>true}
+  end
+
 end
