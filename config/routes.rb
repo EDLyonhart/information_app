@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  resources :token do
-    member do
-      put :generate
+
+  resources :tokens do
+    collection do
+      post :generate
     end
   end
 
@@ -13,15 +14,15 @@ Rails.application.routes.draw do
 end
 
 #           Prefix Verb   URI Pattern                      Controller#Action
-#   generate_token PUT    /token/:id/generate(.:format)    token#generate
-#      token_index GET    /token(.:format)                 token#index
-#                  POST   /token(.:format)                 token#create
-#        new_token GET    /token/new(.:format)             token#new
-#       edit_token GET    /token/:id/edit(.:format)        token#edit
-#            token GET    /token/:id(.:format)             token#show
-#                  PATCH  /token/:id(.:format)             token#update
-#                  PUT    /token/:id(.:format)             token#update
-#                  DELETE /token/:id(.:format)             token#destroy
+#  generate_tokens POST   /tokens/generate(.:format)       tokens#generate
+#           tokens GET    /tokens(.:format)                tokens#index
+#                  POST   /tokens(.:format)                tokens#create
+#        new_token GET    /tokens/new(.:format)            tokens#new
+#       edit_token GET    /tokens/:id/edit(.:format)       tokens#edit
+#            token GET    /tokens/:id(.:format)            tokens#show
+#                  PATCH  /tokens/:id(.:format)            tokens#update
+#                  PUT    /tokens/:id(.:format)            tokens#update
+#                  DELETE /tokens/:id(.:format)            tokens#destroy
 # unsubscribe_user PUT    /users/:id/unsubscribe(.:format) users#unsubscribe
 #            users GET    /users(.:format)                 users#index
 #                  POST   /users(.:format)                 users#create

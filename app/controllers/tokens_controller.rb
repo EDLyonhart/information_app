@@ -38,13 +38,10 @@ class TokensController < ApplicationController
     end
   end
 
-  def generate_token(@user)
-    if @token.user_id
-      @token.generate(@user.id)
-      redirect_to user_path
-    else
-      redirect_to new_token_path
-    end
+  def generate
+    user = User.find(params[:id])
+    Token.generate(user)
+    redirect_to user_path(user)
   end
 
 end
