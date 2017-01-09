@@ -21,7 +21,7 @@
       <!-- only render this link if user has a token, and Token.user_id matches User.id -->
       <% if @modifiable %>
         <div class="col-lg-6">
-          <%= link_to "Unsubscribe from all emails", unsubscribe_user_path(@user), :method => :put, class: 'btn btn-danger' %>
+          <%= link_to "Don't Email Me", unsubscribe_user_path(@user), :method => :put, class: 'btn btn-danger' %>
         </div>
       <% end %>
   </div>
