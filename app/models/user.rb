@@ -12,12 +12,12 @@ class User < ApplicationRecord
   after_initialize :initialize_defaults, :if => :new_record?
 
   def confirm_token
-    @token = Token.find_by(:user_id => self.id)
-    if (token.nonce == nil || User.find(token.user_id).email != self.email)
+    @token = Token.find_by(user_id: self.id)
+    if (@token.nonce == nil || User.find(@token.user_id).email != self.email)
       return false
     else
       self.unsubscribe_from_all
-      Token.consume(token.nonce)
+      Token.consume(@token.nonce)
       return true
     end
   end

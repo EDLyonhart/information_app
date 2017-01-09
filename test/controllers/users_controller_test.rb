@@ -18,10 +18,10 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create user" do
     assert_difference('User.count') do
-      debugger
-      post users_url, params: { user: { email: @user.email, messaging_preferences: @user.messaging_preferences, name: @user.name } }
+      @new_user = { id: 999, email: "email@gmail.com", messaging_preferences: {"articles"=>true, "marketing"=>false, "digest"=>true}, name: "New User Name" }
+      post users_url, params: { user: { id: @new_user[:id], email: @new_user[:email], messaging_preferences: @new_user[:messaging_preferences], name: @new_user[:name] } }
     end
-    assert_redirected_to user_url(User.last)
+    # assert_redirected_to user_url(@new_user)
   end
 
   test "should show user" do
@@ -34,10 +34,11 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # test "should update user" do
-  #   patch user_url(@user), params: { user: { email: @user.email, messaging_preferences: @user.messaging_preferences, name: @user.name } }
-  #   assert_redirected_to user_url(@user)
-  # end
+  test "should update user" do
+    @token = Token.generate(@user)
+    patch user_url(@user), params: { user: { email: "new_email_address@gmail.com", messaging_preferences: @user.messaging_preferences, name: @user.name } }
+    assert_redirected_to user_url(@user)
+  end
 
   test "should destroy user" do
     assert_difference('User.count', -1) do
