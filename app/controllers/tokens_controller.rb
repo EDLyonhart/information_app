@@ -44,4 +44,9 @@ class TokensController < ApplicationController
     redirect_to :back, notice: 'Token was successfully generated.'
   end
 
+  private
+  def token_params
+    params.require(:token).permit(:nonce, :user_id)
+  end
+
 end
