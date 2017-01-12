@@ -2,14 +2,13 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   before(:example) do
-    @user = User.create!(name: "Test User", email: "test2@email.com", messaging_preferences: {marketing: true, articles: true, digest: true })
+    @user = User.create!(name: "Test User", email: "model_test1@email.com", messaging_preferences: {marketing: true, articles: true, digest: true })
     @token = Token.generate(@user)
-    @user2 = User.create!(name: "Test User", email: "test3@email.com", messaging_preferences: {marketing: true, articles: true, digest: true })
+    @user2 = User.create!(name: "Test User", email: "model_test2@email.com", messaging_preferences: {marketing: true, articles: true, digest: true })
   end
 
   context "confirm_token method" do
     it "should return true if user has an assoiated token" do
-      debugger
       expect @user.confirm_token == true
     end
 

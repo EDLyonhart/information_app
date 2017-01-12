@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Token, type: :model do
   before(:example) do
-    @user = User.create!(name: "Test User", email: "test2@email.com", messaging_preferences: {marketing: true, articles: true, digest: true })
+    @user = User.create!(name: "Test User", email: "model_test3@email.com", messaging_preferences: {marketing: true, articles: true, digest: true })
     @init_token_count = Token.count
     @token = Token.generate(@user)
   end
