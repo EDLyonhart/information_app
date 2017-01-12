@@ -23,14 +23,13 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  # describe "SHOW user" do
-  #   @user
-  # end
+  describe "SHOW user" do
+    
+  end
 
-  describe "POST user" do
-    it "responds to html by default" do
-      post :create, { :user => {name: "Test User", email: "controller_test1@email.com", messaging_preferences: {marketing: true, articles: true, digest: true } } }
-      expect(response.content_type).to eq "text/html"
+  describe "POST" do
+    it "should create a user" do
+      create(:user)
       expect(response.status).to eq(200)
     end
   end
