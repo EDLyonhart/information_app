@@ -13,9 +13,10 @@ end
 
 FactoryGirl.define do
   # create a user
-  factory :user do
-    name "Test User"
-    email  "factory_girl_test_email@email.com"
+  factory :user do |u|
+    u.name "Test User"
+    u.email  "factory_girl_test_email@email.com"
+    u.messaging_preferences({marketing: false, articles: false, digest: true})
   end
 
   # Create a token
