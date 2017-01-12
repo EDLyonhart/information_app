@@ -3,6 +3,8 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 ENV["RAILS_ENV"] ||= 'test'
 require 'spec_helper'
+require 'support/factory_girl'
+require 'support/database_cleaner'
 require File.expand_path("../../config/environment", __FILE__)
 # require 'fabrication'
 require 'rspec/rails'
