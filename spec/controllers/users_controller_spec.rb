@@ -59,15 +59,17 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  # describe "POST action" do
+  describe "POST #user" do
+    it "successfully generates a user" do
+      subject { post "/users", params: { name: "Test User", email: "TestUser999@email.com", messaging_preferences: {marketing: true, articles: true, digest: true } } }
+      expect(response.status).to eq(200)
+    end
+  end
 
-  #   it "should create a user" do
-  #     create(:user)
-  #     expect(response.status).to eq(200)
-  #   end
-  # end
-
-  # after(:example) do
-  #   @user.delete
-  # end
 end
+
+
+
+
+
+
