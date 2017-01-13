@@ -64,6 +64,11 @@ RSpec.describe UsersController, type: :controller do
       subject { post "/users", params: { name: "Test User", email: "TestUser999@email.com", messaging_preferences: {marketing: true, articles: true, digest: true } } }
       expect(response.status).to eq(200)
     end
+
+    it "should be entered into the database" do
+      @user = FactoryGirl.create(:user)
+      expect(User.find(@user.id)).to be_present
+    end
   end
 
 end
